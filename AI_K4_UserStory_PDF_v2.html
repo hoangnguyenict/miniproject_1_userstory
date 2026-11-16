@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Khối 4 | Phân tích vấn đề – User Story – Ý tưởng AI</title>
+<style>
+:root{--blue:#1269b8;--blue2:#e8f3ff;--navy:#17334f;--red:#c82122;--green:#14805f;--line:#d9e4ed;--bg:#f2f7fc;--muted:#63758a;--white:#fff;--shadow:0 12px 36px rgba(27,61,95,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--navy);font:15px/1.65 'Segoe UI',Arial,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #7fc7ff;outline-offset:2px} .shell{max-width:1140px;margin:auto;padding:26px 22px 72px}.top{background:linear-gradient(120deg,#0a5aa1,#1280c9);padding:26px 30px 24px;border-radius:22px;color:#fff;box-shadow:var(--shadow)}.eyebrow{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:11px;opacity:.82}.top h1{font-size:clamp(22px,3vw,34px);margin:8px 0 8px;line-height:1.35}.top p{margin:0;color:#dceffe;font-size:14px}.credit{font-size:11px;opacity:.9;margin-top:12px}.student{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px 22px;margin-top:19px}.student h2,.pane h2{font-size:18px;margin:0 0 13px}.fields{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:13px}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}.field input,.answer, .answer-line{width:100%;border:1.5px solid #cddcea;border-radius:11px;background:#fff;color:#17334f;padding:11px 13px;transition:border-color .2s,box-shadow .2s}.answer{resize:none;min-height:62px;line-height:1.65;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere}.field input:focus,.answer:focus,.answer-line:focus{outline:none;border-color:#1681d1;box-shadow:0 0 0 4px #1681d11e}.tabs{display:flex;gap:10px;background:#e3edf7;border-radius:15px;padding:7px;margin:22px 0 18px}.tab{flex:1;border:0;background:transparent;color:#42607b;padding:13px 14px;font-weight:800;border-radius:11px;line-height:1.4}.tab.active{background:#fff;color:#0666ad;box-shadow:0 3px 14px #2d5e831a}.tab .num{display:inline-grid;place-items:center;background:#cadfeb;color:#265d83;width:24px;height:24px;border-radius:50%;margin-right:8px}.tab.active .num{background:#1478c7;color:white}.pane{display:none}.pane.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 25px;margin-bottom:17px;box-shadow:var(--shadow)}.section-heading{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:19px;font-weight:800;color:#075eaa}.section-number{background:#e8f3ff;color:#1475bf;padding:2px 12px;border-radius:9px;font-size:14px}.problem{background:#fff8f8;border:1px solid #f4d4d4;border-left:5px solid #d53a3a;border-radius:12px;padding:18px 20px;line-height:1.95;margin:0}.problem strong{color:#b60d0d}.problem .goal{color:#056bb6;font-weight:700}.hint{background:#f0f8ff;border:1px solid #cce6fc;border-radius:11px;padding:11px 14px;color:#325b7b;font-size:13px;margin:8px 0 17px}.hint strong{color:#075eaa}.q{margin:18px 0 9px;font-weight:800;font-size:15px}.q small{display:block;font-weight:500;color:var(--muted);margin-top:1px}.formula{background:#edf9f2;border:1px solid #b9e5c9;border-radius:12px;padding:13px 16px;font-size:16px;font-weight:700;margin:15px 0}.formula .fill{color:#068452}.formula .base{color:#086cb6}.frame{border:1px dashed #bcd5ec;background:#f8fbff;border-radius:12px;padding:14px 16px}.triple{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.mini{background:#f1f7fd;border-radius:12px;padding:12px 13px}.mini b{display:block;font-size:13px;color:#0e6db5}.mini span{font-size:12px;color:#52697d}.mini textarea{display:block;width:100%;min-height:48px;margin-top:9px;border:1px solid #c7dced;border-radius:8px;padding:10px;background:white;line-height:1.55;resize:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}.stories{margin-top:12px}.aside{font-size:12px;color:#607789;margin-top:6px}.idea{min-height:82px}.suggest{background:#fff9eb;border:1px solid #f0ddb0;border-radius:12px;padding:13px 15px;font-size:13px;color:#65522d;margin-bottom:15px}.suggest b{color:#72500f}.tips{margin:0 0 2px 18px;padding:0}.tips li{padding:3px 0}.actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:20px}.btn{border:0;border-radius:11px;padding:12px 18px;font-weight:800}.btn-primary{color:white;background:#0874bd}.btn-secondary{background:#e5f0fa;color:#0a66a5}.btn-download{background:#168058;color:white;padding:13px 21px}.btn:disabled{opacity:.55;cursor:wait}.footerbar{margin-top:20px;background:white;border:1px solid var(--line);border-radius:18px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}.status{display:flex;align-items:center;gap:9px;color:#48647e;font-size:13px}.dot{width:10px;height:10px;background:#20a47d;border-radius:50%}.warning{color:#b92b29;font-size:13px;font-weight:600;min-height:16px}.count{color:#738497;font-size:12px;text-align:right}.checkrow{display:flex;gap:9px;align-items:flex-start;margin:10px 0;font-size:13px}.checkrow input{margin-top:6px;accent-color:#0874bd;width:16px;height:16px}.note{font-size:12px;color:var(--muted)}details{margin-top:13px;border:1px solid #dae9f5;border-radius:11px;padding:10px 14px;background:#f9fcff}summary{cursor:pointer;color:#0b69af;font-weight:800}details p{font-size:13px;margin:10px 0 0}#toast{position:fixed;bottom:24px;right:24px;background:#143c59;color:white;border-radius:12px;padding:12px 18px;box-shadow:0 10px 30px #162f503d;max-width:430px;display:none;z-index:100}.export{position:fixed;left:-100000px;top:0;width:760px;background:#fff;color:#1a334c;font-family:'Segoe UI',Arial,sans-serif}.export-page{width:760px;min-height:1025px;padding:32px 38px;background:white;page-break-after:always}.export-page:last-child{page-break-after:auto}.export h1{font-size:22px;color:#0763a6;line-height:1.4}.export h2{font-size:16px;color:#116caf;margin:18px 0 8px;border-bottom:1px solid #d3e4f1;padding-bottom:5px}.export p{margin:7px 0 12px;line-height:1.8;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}.export .line{font-size:13px;line-height:1.8}.export .answerprint{border:1px solid #d3e3ef;border-radius:9px;padding:11px 13px;min-height:68px;background:#f7fbff;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;font-size:13px}.export .detail{color:#57738c;font-size:12px}.export .tag{background:#e7f2fc;color:#0763a6;padding:5px 12px;border-radius:6px;font-weight:800}.export .foot{margin-top:18px;font-size:10px;color:#6e8292}@media(max-width:700px){.shell{padding:12px 12px 45px}.top{padding:21px}.student,.card{padding:17px}.fields{grid-template-columns:1fr}.tabs{flex-direction:column}.triple{grid-template-columns:1fr}.actions{flex-direction:column;align-items:stretch}.footerbar{align-items:stretch}.btn-download{width:100%}.problem{padding:13px 14px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top"><div class="eyebrow">Phiếu thực hành · AI Khối 4</div><h1>Từ vấn đề thực tế đến ý tưởng giải pháp AI</h1><p>Em phân tích vấn đề, viết User Story và đề xuất ý tưởng AI để giúp học sinh sử dụng AI an toàn, đúng cách.</p><div class="credit">Thiết kế: Hoangntm2 - VSC Tih Times City</div></header>
+<section class="student"><h2>👤 Thông tin học sinh</h2><div class="fields"><div class="field"><label for="studentName">Họ và tên học sinh <span style="color:#ba1d1d">*</span></label><input id="studentName" placeholder="Nhập họ và tên"></div><div class="field"><label for="studentClass">Lớp <span style="color:#ba1d1d">*</span></label><input id="studentClass" placeholder="Ví dụ: 4A1"></div><div class="field"><label for="studentDate">Ngày làm bài</label><input id="studentDate" type="date"></div></div></section>
+<nav class="tabs" aria-label="Hai phần của phiếu thực hành"><button id="tab1" class="tab active" type="button" onclick="switchTab(1)" aria-selected="true"><span class="num">1</span>Phân tích vấn đề và viết User Story</button><button id="tab2" class="tab" type="button" onclick="switchTab(2)" aria-selected="false"><span class="num">2</span>Ý tưởng giải pháp AI</button></nav>
+<main>
+<section id="pane1" class="pane active" role="tabpanel" aria-labelledby="tab1">
+<article class="card"><h2 class="section-heading"><span class="section-number">Bước 1</span> Đọc và tìm hiểu vấn đề</h2><p class="problem">Nhiều học sinh <strong>sử dụng AI khi không có người giám sát, chia sẻ thông tin cá nhân, sao chép nội dung chưa kiểm chứng và quá phụ thuộc vào AI.</strong> Điều này có thể khiến <strong>thông tin cá nhân bị lộ và ảnh hưởng đến chất lượng học tập.</strong> Nhà trường muốn tìm ra cách để <span class="goal">nhắc nhở và giúp học sinh sử dụng AI an toàn, đúng cách trong học tập.</span></p></article>
+<article class="card"><h2 class="section-heading"><span class="section-number">Bước 2</span> Phân tích vấn đề</h2><p class="hint"><strong>Hướng dẫn:</strong> Đọc vấn đề ở trên và trả lời bằng lời của em. Cố gắng viết rõ ràng, không chỉ chép lại cả đoạn văn.</p>
+<div class="q">1. Ai bị ảnh hưởng trong vấn đề trên?<small>Những người nào đang gặp khó khăn?</small></div><textarea class="answer" id="affected" placeholder="Em hãy viết câu trả lời..."></textarea><div class="count" data-count="affected"></div>
+<div class="q">2. Vấn đề họ gặp phải là gì?<small>Điều gì đang xảy ra khi học sinh sử dụng AI?</small></div><textarea class="answer" id="difficulty" placeholder="Em hãy viết câu trả lời..."></textarea><div class="count" data-count="difficulty"></div>
+<div class="q">3. Hậu quả nếu vấn đề không được giải quyết là gì?<small>Điều gì có thể xảy ra với thông tin cá nhân hoặc việc học tập?</small></div><textarea class="answer" id="consequence" placeholder="Em hãy viết câu trả lời..."></textarea><div class="count" data-count="consequence"></div></article>
+<article class="card"><h2 class="section-heading"><span class="section-number">Bước 3</span> Xác định nhu cầu và viết User Story</h2><div class="formula"><span class="base">Là một</span> <span class="fill">[vai trò]</span>, <span class="base">tôi muốn</span> <span class="fill">[nhu cầu]</span>, <span class="base">để</span> <span class="fill">[mục đích]</span>.</div><p class="note">Em có thể điền ba thành phần dưới đây để hiểu cấu trúc User Story, sau đó viết thành một câu hoàn chỉnh bằng lời của em.</p><div class="triple"><div class="mini"><b>Vai trò – Ai?</b><span>Em viết từ góc nhìn của ai?</span><textarea id="role" rows="1" placeholder="Ví dụ: học sinh"></textarea></div><div class="mini"><b>Nhu cầu – Muốn gì?</b><span>Người đó cần được hỗ trợ điều gì?</span><textarea id="need" rows="1" placeholder="Nhập nhu cầu..."></textarea></div><div class="mini"><b>Mục đích – Để làm gì?</b><span>Điều tốt đẹp muốn đạt được?</span><textarea id="purpose" rows="1" placeholder="Nhập mục đích..."></textarea></div></div><div class="q">4. Nhu cầu của người dùng là gì?</div><textarea class="answer" id="userNeed" placeholder="Người dùng cần..."></textarea><div class="q">5. User Story của em</div><textarea class="answer" id="story" placeholder="Là một ..., tôi muốn ..., để ..."></textarea><div class="count" data-count="story"></div><div class="actions"><button class="btn btn-secondary" type="button" onclick="createStory()">✨ Ghép thử User Story từ 3 ô</button><button class="btn btn-primary" type="button" onclick="switchTab(2)">Tiếp tục: Ý tưởng giải pháp AI →</button></div><details><summary>Em chưa rõ User Story là gì?</summary><p>User Story là cách mô tả <b>ai</b> cần điều gì và <b>vì sao</b> họ cần. Câu thường bắt đầu bằng: “Là một…, tôi muốn…, để…”. User Story nói về nhu cầu, chưa cần mô tả chi tiết một sản phẩm AI.</p></details></article>
+</section>
+<section id="pane2" class="pane" role="tabpanel" aria-labelledby="tab2">
+<article class="card"><h2 class="section-heading"><span class="section-number">Nhắc lại</span> Vấn đề cần giải quyết</h2><p class="problem">Nhiều học sinh <strong>sử dụng AI khi không có người giám sát, chia sẻ thông tin cá nhân, sao chép nội dung chưa kiểm chứng và quá phụ thuộc vào AI.</strong> Điều này có thể khiến thông tin cá nhân bị lộ và ảnh hưởng đến chất lượng học tập. Nhà trường muốn tìm ra cách để <span class="goal">nhắc nhở và giúp học sinh sử dụng AI an toàn, đúng cách trong học tập.</span></p></article>
+<article class="card"><h2 class="section-heading"><span class="section-number">Bước 4</span> Đề xuất ý tưởng giải pháp AI</h2><div class="suggest"><b>Gợi ý suy nghĩ:</b> Nếu có một công cụ AI giúp các bạn sử dụng AI an toàn hơn, công cụ đó sẽ làm gì? AI có thể nhắc nhở, đặt câu hỏi, nhận biết tình huống rủi ro hoặc đưa ra lời khuyên như thế nào? Em không cần lập trình ở bước này.</div><div class="q">6. Ý tưởng giải pháp AI của em là gì?<small>Nêu tên ý tưởng, cách AI hỗ trợ học sinh và kết quả em mong muốn.</small></div><textarea class="answer idea" id="idea" placeholder="Ý tưởng của em là...&#10;Công cụ AI sẽ giúp học sinh bằng cách...&#10;Nhờ vậy, học sinh có thể..."></textarea><div class="count" data-count="idea"></div><details><summary>Gợi ý để em tự kiểm tra ý tưởng</summary><ul class="tips"><li>Ý tưởng có liên quan đến vấn đề đã đọc không?</li><li>AI sẽ thực hiện công việc gì cụ thể?</li><li>Học sinh sẽ được giúp đỡ như thế nào?</li><li>Ý tưởng có khuyến khích kiểm chứng thông tin và bảo vệ dữ liệu cá nhân không?</li></ul></details><div class="q">Em tự kiểm tra bài làm</div><label class="checkrow"><input type="checkbox" id="ck1">Em đã phân tích được ai bị ảnh hưởng, vấn đề và hậu quả.</label><label class="checkrow"><input type="checkbox" id="ck2">Em đã viết User Story có đủ vai trò, nhu cầu và mục đích.</label><label class="checkrow"><input type="checkbox" id="ck3">Ý tưởng của em có sử dụng AI để giải quyết vấn đề đã nêu.</label><div class="actions"><button class="btn btn-secondary" onclick="switchTab(1)">← Quay lại Tab 1</button><span class="note">Hai tab đều được đưa vào cùng một file PDF.</span></div></article>
+</section>
+</main>
+<div class="footerbar"><div><div class="status"><span class="dot"></span><span id="savedLabel">Bài làm được lưu tạm trên trình duyệt này</span></div><div class="note">Không cần đăng nhập. Nên tải PDF trước khi đổi máy hoặc xóa dữ liệu trình duyệt.</div><div id="warning" class="warning" role="status"></div></div><button id="download" class="btn btn-download" onclick="downloadPDF()">↓ Tải bài làm (.pdf)</button></div>
+</div>
+<div id="toast" role="status"></div>
+<div id="export" class="export" aria-hidden="true"></div>
+<!-- PDF được tạo trực tiếp trong trình duyệt, không phụ thuộc thư viện bên ngoài. -->
+<script>
+const ids=['studentName','studentClass','studentDate','affected','difficulty','consequence','role','need','purpose','userNeed','story','idea','ck1','ck2','ck3'];
+const key='AI_K4_USER_STORY_V2';
+function el(id){return document.getElementById(id)}
+function autosize(node){if(node.tagName!=='TEXTAREA')return;const minimum=node.closest('.mini')?48:node.classList.contains('idea')?82:62;node.style.height='auto';node.style.height=Math.max(minimum,node.scrollHeight+2)+'px'}
+function switchTab(i){[1,2].forEach(n=>{el('tab'+n).classList.toggle('active',n===i);el('pane'+n).classList.toggle('active',n===i);el('tab'+n).setAttribute('aria-selected',String(n===i))});window.scrollTo({top:Math.max(0,document.querySelector('.tabs').getBoundingClientRect().top+window.scrollY-12),behavior:'smooth'})}
+function toast(msg){const t=el('toast');t.textContent=msg;t.style.display='block';clearTimeout(window._tt);window._tt=setTimeout(()=>t.style.display='none',3500)}
+function save(){let d={};ids.forEach(id=>d[id]=el(id).type==='checkbox'?el(id).checked:el(id).value);try{localStorage.setItem(key,JSON.stringify(d));el('savedLabel').textContent='Đã tự lưu trên trình duyệt này'}catch(e){el('savedLabel').textContent='Không thể tự lưu; hãy tải PDF để giữ bài làm'}updateCounts()}
+function updateCounts(){document.querySelectorAll('[data-count]').forEach(x=>{let n=el(x.dataset.count).value.trim().length;x.textContent=n?n+' ký tự':''})}
+function createStory(){const r=el('role').value.trim(),n=el('need').value.trim(),p=el('purpose').value.trim();if(!r||!n||!p){toast('Em hãy điền đủ Vai trò, Nhu cầu và Mục đích trước nhé.');return}el('story').value=`Là một ${r}, tôi muốn ${n}, để ${p}.`;autosize(el('story'));save();toast('Đã ghép câu User Story. Em có thể chỉnh sửa để câu tự nhiên hơn.')}
+function safe(s){return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')}
+function printable(id){return safe(el(id).value.trim()||'Chưa trả lời')}
+function answer(label,id){return `<h2>${label}</h2><div class="answerprint">${printable(id)}</div>`}
+function filename(s){return (s||'').trim().replace(/[\\/:*?"<>|]/g,'').replace(/\s+/g,'_').slice(0,70)||'Chua_nhap'}
+// Xuất PDF trực tiếp trong trình duyệt: không cần CDN, hỗ trợ tiếng Việt và ngắt trang linh hoạt.
+// Mỗi trang được dựng thành canvas A4, sau đó đóng gói thành tệp PDF hợp lệ.
+const PDF_W=595.28, PDF_H=841.89, PDF_SCALE=2;
+const PDF_COLOR={navy:'#17334f',blue:'#096ab3',pale:'#edf6ff',line:'#d6e5f1',text:'#26394d',muted:'#657d90',red:'#be2424',green:'#167956'};
+function pdfFont(ctx,size=11,weight=400){ctx.font=`${weight} ${size}px "Segoe UI", Arial, sans-serif`;ctx.textBaseline='top'}
+function pdfText(ctx,s,x,y,size=11,weight=400,color=PDF_COLOR.text){pdfFont(ctx,size,weight);ctx.fillStyle=color;ctx.fillText(String(s),x,y)}
+function pdfRect(ctx,x,y,w,h,fill,r=0,stroke=null){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=.9;ctx.stroke()}}
+function pdfLines(ctx,text,maxWidth,size=11,weight=400){
+ pdfFont(ctx,size,weight);
+ const result=[];
+ String(text??'').replace(/\r/g,'').split('\n').forEach(paragraph=>{
+  if(!paragraph.trim()){result.push('');return}
+  let current='';
+  for(const word of paragraph.trim().split(/\s+/)){
+   const candidate=current?current+' '+word:word;
+   if(ctx.measureText(candidate).width<=maxWidth){current=candidate;continue}
+   if(current){result.push(current);current=''}
+   if(ctx.measureText(word).width<=maxWidth){current=word;continue}
+   let part='';
+   for(const ch of Array.from(word)){
+    if(part&&ctx.measureText(part+ch).width>maxWidth){result.push(part);part=ch}
+    else part+=ch;
+   }
+   current=part;
+  }
+  result.push(current);
+ });
+ return result.length?result:[''];
+}
+function pdfBuildPages(){
+ const pages=[], left=43,right=PDF_W-43,width=right-left,limit=PDF_H-58;
+ let canvas,ctx,y=0;
+ const student=el('studentName').value.trim(),cls=el('studentClass').value.trim();
+ const date=el('studentDate').value?new Date(el('studentDate').value+'T12:00:00').toLocaleDateString('vi-VN'):'';
+ function newPage(){
+  canvas=document.createElement('canvas');canvas.width=Math.round(PDF_W*PDF_SCALE);canvas.height=Math.round(PDF_H*PDF_SCALE);
+  ctx=canvas.getContext('2d',{alpha:false});ctx.scale(PDF_SCALE,PDF_SCALE);
+  ctx.fillStyle='white';ctx.fillRect(0,0,PDF_W,PDF_H);pages.push(canvas);
+  pdfRect(ctx,left,25,width,42,PDF_COLOR.pale,9);
+  pdfRect(ctx,left,25,5,42,PDF_COLOR.blue,2);
+  pdfText(ctx,'PHIẾU THỰC HÀNH · AI KHỐI 4',left+16,32,13,800,PDF_COLOR.blue);
+  pdfText(ctx,'Phân tích vấn đề · User Story · Ý tưởng giải pháp AI',left+16,51,9,500,PDF_COLOR.navy);
+  const nameLines=pdfLines(ctx,`Học sinh: ${student}   |   Lớp: ${cls}   |   Ngày: ${date}`,width,10,500);
+  nameLines.slice(0,2).forEach((l,i)=>pdfText(ctx,l,left,79+i*15,10,500,PDF_COLOR.navy));
+  ctx.strokeStyle=PDF_COLOR.line;ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(left,115);ctx.lineTo(right,115);ctx.stroke();
+  y=133;
+ }
+ function ensure(minHeight=45){if(y+minHeight>limit)newPage()}
+ function section(title){
+  ensure(47);
+  pdfRect(ctx,left,y,width,31,'#e5f2ff',7);
+  pdfText(ctx,title,left+12,y+7,12.3,800,PDF_COLOR.blue);
+  y+=44;
+ }
+ function note(text){
+  let lines=pdfLines(ctx,text,width-27,10,400);let j=0;
+  while(j<lines.length){
+   ensure(38);
+   const fits=Math.max(1,Math.floor((limit-y-15)/15));const part=lines.slice(j,j+fits);
+   pdfRect(ctx,left,y,width,part.length*15+18,'#fff6f4',7,'#f2d3d0');
+   pdfRect(ctx,left,y,3,part.length*15+18,PDF_COLOR.red,1);
+   part.forEach((l,k)=>pdfText(ctx,l,left+13,y+9+k*15,10,400,PDF_COLOR.text));
+   y+=part.length*15+29;j+=part.length;
+  }
+ }
+ function answer(label,value){
+  const raw=String(value||'').trim()||'Chưa trả lời';
+  let lines=pdfLines(ctx,raw,width-27,10.8,400),pos=0,continued=false;
+  while(pos<lines.length){
+   ensure(79);
+   pdfText(ctx,label+(continued?' (tiếp theo)':''),left,y,11.2,700,PDF_COLOR.navy);y+=24;
+   let available=Math.floor((limit-y-19)/17);
+   if(available<1){newPage();continued=true;continue}
+   const subset=lines.slice(pos,pos+available),h=Math.max(40,subset.length*17+20);
+   pdfRect(ctx,left,y,width,h,'#f6faff',8,PDF_COLOR.line);
+   subset.forEach((line,i)=>pdfText(ctx,line,left+13,y+10+i*17,10.8,400,PDF_COLOR.text));
+   y+=h+16;pos+=subset.length;continued=pos<lines.length;
+  }
+ }
+ function checklist(){
+  ensure(48);pdfText(ctx,'TỰ KIỂM TRA BÀI LÀM',left,y,11.5,800,PDF_COLOR.blue);y+=24;
+  const checks=[['ck1','Em đã phân tích được ai bị ảnh hưởng, vấn đề và hậu quả.'],['ck2','Em đã viết User Story có đủ vai trò, nhu cầu và mục đích.'],['ck3','Ý tưởng của em có sử dụng AI để giải quyết vấn đề đã nêu.']];
+  for(const [id,label] of checks){
+   const lines=pdfLines(ctx,label,width-32,10,400);ensure(lines.length*15+10);
+   pdfRect(ctx,left,y+1,12,12,el(id).checked?PDF_COLOR.green:'#fff',2,el(id).checked?PDF_COLOR.green:PDF_COLOR.line);
+   if(el(id).checked)pdfText(ctx,'✓',left+1,y-3,12,800,'#fff');
+   lines.forEach((v,i)=>pdfText(ctx,v,left+22,y+i*15,10,400,PDF_COLOR.text));
+   y+=lines.length*15+9;
+  }
+ }
+ newPage();
+ section('PHẦN 1 · PHÂN TÍCH VẤN ĐỀ VÀ VIẾT USER STORY');
+ note('Nhiều học sinh sử dụng AI khi không có người giám sát, chia sẻ thông tin cá nhân, sao chép nội dung chưa kiểm chứng và quá phụ thuộc vào AI. Điều này có thể khiến thông tin cá nhân bị lộ và ảnh hưởng đến chất lượng học tập. Nhà trường muốn tìm ra cách để nhắc nhở và giúp học sinh sử dụng AI an toàn, đúng cách trong học tập.');
+ answer('1. Ai bị ảnh hưởng trong vấn đề trên?',el('affected').value);
+ answer('2. Vấn đề họ gặp phải là gì?',el('difficulty').value);
+ answer('3. Hậu quả khi vấn đề không được giải quyết?',el('consequence').value);
+ answer('4. Nhu cầu của người dùng là gì?',el('userNeed').value);
+ section('CÁC THÀNH PHẦN USER STORY');
+ answer('Vai trò - Ai?',el('role').value);
+ answer('Nhu cầu - Muốn gì?',el('need').value);
+ answer('Mục đích - Để làm gì?',el('purpose').value);
+ answer('5. User Story của em',el('story').value);
+ section('PHẦN 2 · Ý TƯỞNG GIẢI PHÁP AI');
+ answer('6. Ý tưởng giải pháp AI của em là gì?',el('idea').value);
+ checklist();
+ pages.forEach((page,index)=>{
+  const c=page.getContext('2d');c.save();
+  c.strokeStyle=PDF_COLOR.line;c.lineWidth=.8;c.beginPath();c.moveTo(left,PDF_H-42);c.lineTo(right,PDF_H-42);c.stroke();
+  pdfText(c,'Thiết kế: Hoangntm2 - VSC Tih Times City',left,PDF_H-34,8,400,PDF_COLOR.muted);
+  pdfText(c,`Trang ${index+1}/${pages.length}`,right-54,PDF_H-34,8,600,PDF_COLOR.muted);c.restore();
+ });
+ return pages;
+}
+// PDF raster images are JPEG byte streams, packed into PDF page/image/content objects.
+// Blob + download anchor ensures the button saves a real .pdf file, not an HTML page.
+function pdfBytesFromPages(canvases){
+ const te=new TextEncoder(),parts=[],offsets=[0];let total=0;
+ function add(data){parts.push(data);total+=data.length}
+ function string(s){add(te.encode(s))}
+ function obj(id,header,stream){offsets[id]=total;string(`${id} 0 obj\n`);if(stream){string(header+`\nstream\n`);add(stream);string('\nendstream\n')}else string(header+'\n');string('endobj\n')}
+ string('%PDF-1.4\n%PDFGEN\n');
+ const pageRefs=canvases.map((_,i)=>`${3+i*3} 0 R`).join(' ');
+ obj(1,'<< /Type /Catalog /Pages 2 0 R >>');
+ obj(2,`<< /Type /Pages /Kids [${pageRefs}] /Count ${canvases.length} >>`);
+ canvases.forEach((page,i)=>{
+  const p=3+i*3,img=p+1,content=p+2;
+  const binary=atob(page.toDataURL('image/jpeg',.91).split(',')[1]);
+  const jpeg=new Uint8Array(binary.length);for(let j=0;j<binary.length;j++)jpeg[j]=binary.charCodeAt(j);
+  obj(p,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${PDF_W} ${PDF_H}] /Resources << /XObject << /Im0 ${img} 0 R >> >> /Contents ${content} 0 R >>`);
+  obj(img,`<< /Type /XObject /Subtype /Image /Width ${page.width} /Height ${page.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>`,jpeg);
+  const command=te.encode(`q\n${PDF_W} 0 0 ${PDF_H} 0 0 cm\n/Im0 Do\nQ\n`);
+  obj(content,`<< /Length ${command.length} >>`,command);
+ });
+ const startXref=total;
+ string(`xref\n0 ${offsets.length}\n0000000000 65535 f \n`);
+ for(let i=1;i<offsets.length;i++)string(`${String(offsets[i]).padStart(10,'0')} 00000 n \n`);
+ string(`trailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${startXref}\n%%EOF`);
+ return new Blob(parts,{type:'application/pdf'});
+}
+async function downloadPDF(){
+ const warning=el('warning');warning.textContent='';
+ if(!el('studentName').value.trim()||!el('studentClass').value.trim()){
+  warning.textContent='Em cần nhập Họ tên và Lớp trước khi tải PDF.';
+  switchTab(1);
+  (!el('studentName').value.trim()?el('studentName'):el('studentClass')).focus();
+  toast('Vui lòng nhập đầy đủ Họ tên và Lớp.');return;
+ }
+ const required=['affected','difficulty','consequence','userNeed','story','idea'];
+ const empty=required.filter(id=>!el(id).value.trim());
+ if(empty.length&&!confirm(`Em còn ${empty.length} câu chưa trả lời. Em vẫn muốn tải bài làm?`))return;
+ const btn=el('download');btn.disabled=true;btn.textContent='Đang tạo file PDF…';
+ try{
+  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+  // Cho trình duyệt cập nhật trạng thái nút trước khi dựng các trang.
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const pages=pdfBuildPages(),blob=pdfBytesFromPages(pages);
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=`${filename(el('studentClass').value)}_${filename(el('studentName').value)}_Phan_tich_van_de_User_Story_Giai_phap_AI_K4.pdf`;
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+  toast(`Đã tải file PDF gồm ${pages.length} trang với nội dung của cả hai tab.`);
+ }catch(e){console.error('Xuất PDF thất bại:',e);warning.textContent='Chưa thể tạo PDF. Em hãy thử lại hoặc báo giáo viên.';toast('Không thể tạo PDF. Hãy thử lại.');}
+ finally{btn.disabled=false;btn.textContent='↓ Tải bài làm (.pdf)'}
+}
+(function init(){let data={};try{data=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(e){}ids.forEach(id=>{const node=el(id);if(Object.prototype.hasOwnProperty.call(data,id)){if(node.type==='checkbox')node.checked=!!data[id];else node.value=data[id]}else if(id==='studentDate')node.value=new Date().toLocaleDateString('en-CA');node.addEventListener('input',()=>{autosize(node);save()});node.addEventListener('change',save);autosize(node)});updateCounts()})();
+</script>
+</body></html>
